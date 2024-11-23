@@ -1,7 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:food_recipes_app/core/services/storage/storage_key_enums.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'app/modules/common/controllers/route_controller.dart';
 import 'app/modules/common/widgets/appbar/bottom_app_bar/bottom_app_bar_controller.dart';
@@ -15,6 +19,8 @@ import 'core/services/storage/custom_storage_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Hive.init((await getApplicationDocumentsDirectory()).path);
+  await Hive.openBox(StorageKeys.customStorage.name);
   await initApp();
 }
 
@@ -49,6 +55,11 @@ class MyApp extends StatelessWidget {
       builder: routeController.materialRouteBuilder,
       routingCallback: routeController.materialRouteCallBack,
       supportedLocales: locales.values,
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
       theme: AppThemes.light,
       getPages: AppPages.PAGES,
     );

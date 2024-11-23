@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 import '../../../../../core/utils/getx_extensions.dart';
 import '../../../../../core/utils/utils.dart';
 import '../../../../../core/variables/colors.dart';
-
 import '../texts/custom_text.dart';
 
 class SearchField extends StatelessWidget {
@@ -177,7 +176,7 @@ class SearchField extends StatelessWidget {
                               }
                             : validator,
                         onSaved: onSaved,
-                        style: TextStyle(color: ColorTable.getTextColor, fontSize: Utils.highTextSize, fontWeight: FontWeight.w500),
+                        style: TextStyle(color: ColorTable.getTextColor, fontSize: Utils.normalTextSize, fontWeight: FontWeight.w500),
                         decoration: InputDecoration(
                             contentPadding: !isDense ? EdgeInsets.all(Utils.lowPadding) : EdgeInsets.all(Utils.extraLowPadding * 1.75),
                             isDense: isDense,
@@ -186,7 +185,7 @@ class SearchField extends StatelessWidget {
                             hintText: (hintText ?? "") + (isRequired && isRequiredText ? '*' : ''),
                             hintStyle: TextStyle(
                               color: ColorTable.getTextColor.withOpacity(0.6),
-                              fontSize: hintTextSize ?? Utils.highTextSize,
+                              fontSize: hintTextSize ?? Utils.normalTextSize,
                               fontWeight: FontWeight.w500,
                             ),
                             suffixText: suffixText,
