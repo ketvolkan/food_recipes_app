@@ -1,8 +1,9 @@
 import 'dart:io';
 
-import '../../../app/models/general_response.dart';
 import 'package:get/get.dart';
 import 'package:vexana/vexana.dart';
+
+import '../../../app/models/general_response.dart';
 
 enum Api {
   test,
@@ -11,9 +12,9 @@ enum Api {
   String get path {
     switch (this) {
       case Api.test:
-        return "https://api2.wamessage.app";
+        return "https://api2.common.app";
       case Api.live:
-        return "https://api.wamessage.app";
+        return "https://api.common.app";
     }
   }
 }
